@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script>
+      var state=true;
+      
+      function toggleLight(){
+        var img=document.getElementById("image");
+        state = !state;
+       
+        img.src = state ? "img/on.png" : "img/off.png";
+
+      }
+      
+      function countStart(){
+        var timeLeft=parseInt(document.getElementById("input").value);
+     
+        timeLeft=timeLeft + 1;
+   
+
+        function countDownTimer(){
+          timeLeft -= 1;
+          var time=document.getElementById("timer");
+          var img=document.getElementById("image");
+
+          if (timeLeft <=0 ){
+            img.src = "img/off.png";
+            state=false;
+            clearInterval(setting);
+          }
+
+          time.innerHTML = timeLeft;
+        }
+        var setting = setInterval(countDownTimer,1000)
+      }
+
+    </script>
+  </head>
+
+  <body>
+    <img id="image" src="img/on.png" width="300px">
+    <br>
+    <div>
+    <button class="button" onclick="toggleLight()">
+      On<br>-<br>Off
+    </button>
+    
+    <input id="input" type="text">
+    <button class="button" onclick="countStart()">Start</button>
+    <span class="span" id="timer">請輸入倒數秒數</span>
+  </div>
+
+  </body>
+</html>
